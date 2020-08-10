@@ -1,9 +1,5 @@
 # Copped
 
-> The Project Planning section **should be completed** for your project pitch with instructors.
->
-> To ensure correct Markdown, I recommend copy/pasting the raw template code.
-
 - [Overview](#Overview)
   - [Core Features](#Core-Features)
   - [Goals](#Goals)
@@ -28,29 +24,24 @@
 
 ## Overview
 
-_**Project Title** is lorem ipsum dolor sit amet. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+**Copped** is a web application for sneaker heads! Allowing users to create an account, create custom posts about their recent 'cops', and post about 'heat' they have seen in the street. Copped also gives users the ability to like, and comment on, their favorite posts. 
 
 ### Core Features
 
-_Lorem ipsum dolor sit amet. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+Core features of Copped include, secure web applictaion using Auth, with the ability to create, read, update, and delete.
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
 
 ### Goals
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- Display User details
+- Display Post and Users
+- Add like/ comment ability/ association
+- Search functionality 
+- etc.
 
 ### Team
 
-Created, designed, and developed by [James Madison](https://github.com/mishakessler) for the General Assembly Software Engineering Immersive (November '19 Cohort) Unit 4 Project.
+Created, designed, and developed by [Catherine Balogun](https://github.com/DearCodingCathy) for the General Assembly Software Engineering Immersive (August '20 Cohort) Unit 4 Project.
 
 ### Permissions
 
@@ -60,9 +51,7 @@ Digital assets used with full licensing and permission from [Death to Stock Phot
 
 ## MVP
 
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
-
-_The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+The **Copped** MVP consist of authorization, giving the user the ability to upload edit, delete, like, and comment on post. 
 
 ### Client (Front End)
 
@@ -186,8 +175,6 @@ database_db
 |__ comments/
 |__ likes/
 |__ followers/
-
-
 
 
 ```
