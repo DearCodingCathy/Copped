@@ -59,26 +59,17 @@ The **Copped** MVP consist of authorization, giving the user the ability to uplo
 
 > Use the Wireframes section to display desktop, tablet and mobile views.
 
-![https://wireframe.cc/pro/pp/fb806658f364797](url)
+https://wireframe.cc/pro/pp/fb806658f364797
 
 - Desktop Landing
 
-![https://wireframe.cc/pro/pp/fb806658f364797](url)
+https://wireframe.cc/pro/pp/fb806658f364797
 https://wireframe.cc/pro/pp/fb806658f364797#iol82ghs
 
 - Desktop Hero
 
-![https://wireframe.cc/pro/pp/fb806658f364797#kj5alnok](url)
+https://wireframe.cc/pro/pp/fb806658f364797#kj5alnok
 
-- Resource Show
-
-![Dummy Link](url)
-
-- Tablet Resource Index
-
-![Dummy Link](url)
-
-- Mobile Resource Index
 
 #### Component Hierarchy
 
