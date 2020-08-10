@@ -73,7 +73,7 @@ The **Copped** MVP consist of authorization, giving the user the ability to uplo
 
 #### Component Hierarchy
 
-> Use this section to define your React components and the data architecture of your app.
+https://whimsical.com/C77sKcNm4umgZpvAtG4nR7
 
 ``` structure
 
