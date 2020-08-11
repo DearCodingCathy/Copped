@@ -5,9 +5,10 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+    @posts = Post.where(user_id: @user.id)
 
-    render json: @posts
+    render json: @posts, include: :user, status: :ok
   end
 
   # GET /posts/1
@@ -17,8 +18,9 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
-
+    @user = User.find(params[:user_id])
+    @post = Post.where(user_id: @user.id).new(post_params)
+    @post.user = @current_user
     if @post.save
       render json: @post, status: :created
     else
@@ -40,10 +42,21 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
+  # PUT /comments/1/posts/2
+  # def add_comment
+  #   @post = Post.find(params[:id])
+  #   @comment = Comment.find(params[:comment_id])
+
+  #   @post.comments << @comment
+
+  #   render json: @post, include: :comments
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @user = User.find(params[:user_id])
+      @post = Post.where(user_id: @user.id).find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
