@@ -1,22 +1,25 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import './Header.css'
 
 export default function Header(props) {
   const { currentUser } = props;
   return (
-    <header>
+    <div className='d-flex'>
+    <header className='d-flex justify-content-center'>
 
       {
         currentUser ?
           (
-            <Link to='/allposts'><h1>Copped</h1></Link>
+            <Link to='/allposts'><h1 className='text-light'>Copped</h1></Link>
           )
           :
           (
-            <Link to='/'><h1>Copped</h1></Link>
+              <Link to='/'><h1 className='text-light'>Copped</h1></Link>
           )
 }
-      <hr/>
-    </header>
+      {/* <hr/> */}
+      </header>
+    </div>
   )
 }
