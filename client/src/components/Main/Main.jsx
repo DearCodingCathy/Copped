@@ -6,6 +6,7 @@ import UserLogin from '../../screens/UserLogin/UserLogin'
 import {createPost, readAllPost, readOnePost, updatePost, destroyPost} from '../../services/posts'
 import {createComment, readAllComment, readOneComment, updateComment, destroyComment } from '../../services/comments'
 import UserRegister from '../../screens/UserRegister/UserRegister'
+import ProfileShow from '../../screens/ProfileShow/ProfileShow'
 
 export default class Main extends Component {
   constructor(props) {
@@ -98,26 +99,28 @@ export default class Main extends Component {
             handleRegister={handleRegister}
           />
         )} />
-
         
+        <Route path='/user/:username' render={(props) => (
+          
+          < ProfileShow
+            {...props}
+          currentUser={props.currentUser}
+          />
+        )} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }
-        )} />
+        )} /> */}
 
-        <Route path='/' render={(props) => (
+        {/* <Route path='/' render={(props) => (
           { ...props }
-        )} />
+        )} /> */}
 
-        <Route path='/' render={(props) => (
+        {/* <Route path='/' render={(props) => (
           { ...props }
-        )} />
+        )} /> */}
 
-        <Route path='/' render={(props) => (
-          { ...props }
-        )} />
-
-        <Route path='/' render={(props) => (
+        {/* <Route path='/' render={(props) => (
           { ...props }
         )} /> */}
 

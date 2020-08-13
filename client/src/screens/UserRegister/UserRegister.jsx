@@ -22,6 +22,7 @@ export default class UserRegister extends Component {
     })
   }
 
+
   render() {
     const { first_name, last_name, email, username, password } = this.state;
     const { handleRegister, history } = this.props;
@@ -115,6 +116,7 @@ export default class UserRegister extends Component {
                   <button className='btn' onClick={(e) => {
                     e.preventDefault();
                     handleRegister(this.state);
+                    history.push(`/user/${username}`)
                   }}>
                     Register</button>
               </div>
