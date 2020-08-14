@@ -1,26 +1,32 @@
 import api from './api-helper';
 
-export const createPost = async (data) => {
-  const resp = await api.post('/posts', { post: data });
+export const createPost = async (user_id, data) => {
+  const resp = await api.post(`/users/${user_id}/posts`, { post: data });
   return resp.data;
 }
 
-export const readAllPost = async () => {
-  const resp = await api.get('/posts');
+export const readAllPost = async (user_id) => {
+  const resp = await api.get(`/users/${user_id}/posts`);
   return resp.data;
 }
 
-export const readOnePost = async (id) => {
-  const resp = await api.get(`/posts/${id}`);
+export const readOnePost = async (user_id, id) => {
+  const resp = await api.get(`/users/${user_id}/posts/${id}`);
   return resp.data
 }
 
-export const updatePost = async (id, data) => {
-  const resp = await api.put(`/posts/${id}`, { post: data });
+export const updatePost = async (user_id, id, data) => {
+  const resp = await api.put(`users/${user_id}/posts/${id}`, { post: data });
   return resp.data
 }
 
-export const destroyPost = async (id) => {
-  const resp = await api.delete(`/posts/${id}`);
+export const destroyPost = async (user_id, id) => {
+  const resp = await api.delete(`/users/${user_id}/posts/${id}`);
   return resp;
+}
+
+// To render all post regardless of user on AllPost screen.
+export const getAllPost = async () => {
+  const resp = await api.get(`/allpost`);
+  return resp.data;
 }
