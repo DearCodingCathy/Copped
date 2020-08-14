@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tab, Tabs, Card, Button, DropdownButton, Dropdown } from 'react-bootstrap'
+import { Tab, Tabs, Card, Button, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BsFillGearFill, BsThreeDots } from 'react-icons/bs'
 import { Dialog } from "react-bootstrap-easy-dialog";
@@ -7,9 +7,6 @@ import { Dialog } from "react-bootstrap-easy-dialog";
 
 
 export default class ProfileShow extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     // { fetchPosts }  this.props

@@ -3,12 +3,12 @@ import { Route } from 'react-router-dom'
 
 import UserLogin from '../../screens/UserLogin/UserLogin'
 
-import {createPost, readAllPost, readOnePost, updatePost, destroyPost} from '../../services/posts'
-import {createComment, readAllComment, readOneComment, updateComment, destroyComment } from '../../services/comments'
+import {createPost, readAllPost, updatePost, destroyPost} from '../../services/posts'
+import {createComment, readAllComment, updateComment, destroyComment } from '../../services/comments'
 import UserRegister from '../../screens/UserRegister/UserRegister'
 import ProfileShow from '../../screens/ProfileShow/ProfileShow'
-import PostDisplay from '../PostDisplay/PostDisplay'
-import UserInfo from "../UserInfo/UserInfo"
+// import PostDisplay from '../PostDisplay/PostDisplay'
+// import UserInfo from "../UserInfo/UserInfo"
 import PostDetail from '../../screens/PostDetail/PostDetail'
 import PostEdit from '../../screens/PostEdit/PostEdit'
 

@@ -24,7 +24,7 @@ export default class PostEdit extends Component {
 
 
   render() {
-    const { currentUser, handlePostUpdate } = this.props
+    // const { currentUser, handlePostUpdate } = this.props
     const currentPost = this.props.posts.find(post => post.id === parseInt(this.props.match.params.id))
     // console.log(currentPost)
 
