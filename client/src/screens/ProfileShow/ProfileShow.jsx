@@ -94,7 +94,7 @@ export default class ProfileShow extends Component {
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu>
-                            <Dropdown.Item href="">Edit Post</Dropdown.Item>
+                            <Link to={`/editpost/${post.id}`}>Edit Post</Link>
                             <Dropdown.Item href="" className='text-danger'>Delete Post</Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>

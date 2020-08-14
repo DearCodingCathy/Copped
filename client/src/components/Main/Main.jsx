@@ -10,6 +10,7 @@ import ProfileShow from '../../screens/ProfileShow/ProfileShow'
 import PostDisplay from '../PostDisplay/PostDisplay'
 import UserInfo from "../UserInfo/UserInfo"
 import PostDetail from '../../screens/PostDetail/PostDetail'
+import PostEdit from '../../screens/PostEdit/PostEdit'
 
 export default class Main extends Component {
   constructor(props) {
@@ -117,9 +118,16 @@ export default class Main extends Component {
             posts={this.state.posts}
           />)} />
 
-        {/* <Route path='/' render={(props) => (
-          { ...props }
-        )} /> */}
+        <Route path='/editpost/:id' render={(props) => (
+        
+        <PostEdit
+            {...props}
+            currentUser={this.props.currentUser}
+            posts={this.state.posts}
+            fetchPosts={this.fetchPosts}
+            handlePostUpdate={this.handlePostUpdate}
+          />
+        )} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }
