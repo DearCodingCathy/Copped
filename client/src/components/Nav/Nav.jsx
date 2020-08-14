@@ -13,7 +13,7 @@ export default function Navigation(props) {
     { currentUser ? 
         (
         <>
-            <Navbar fixed="bottom" sticky='bottom' bg="light" variant="light">
+            <Navbar fixed='bottom' sticky='bottom' bg="light" variant="light">
               <Nav className="">
                 <Link to='/'><AiFillHome className='nav-icons text-dark'/></Link>
                 <Link to='/'><MdAdd className='nav-icons text-dark'/></Link>

@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 
 import UserLogin from '../../screens/UserLogin/UserLogin'
 
-import {createPost, readAllPost, updatePost, destroyPost} from '../../services/posts'
+import {createPost, readAllPost, readOnePost, updatePost, destroyPost} from '../../services/posts'
 import {createComment, readAllComment, updateComment, destroyComment } from '../../services/comments'
 import UserRegister from '../../screens/UserRegister/UserRegister'
 import ProfileShow from '../../screens/ProfileShow/ProfileShow'
@@ -19,6 +19,7 @@ export default class Main extends Component {
     this.state = {
       posts: [],
       comments: [],
+      post: []
     }
   }
 
@@ -29,11 +30,16 @@ export default class Main extends Component {
     // if (this.props.currentUser) {
       // this.fetchPosts(this.props.currentUser.id);
     // }
-    this.fetchComments();
+    // this.fetchComments();
+    this.fetchOnePosts();
 }
 
 
-
+  fetchOnePosts = async (user_id, id) => {
+    const post = await readOnePost(user_id, id)
+    this.setState({ post });
+  }
+  
   fetchPosts = async (id) => {
     const posts = await readAllPost(id);
     this.setState({ posts });
@@ -61,27 +67,27 @@ export default class Main extends Component {
   }
 
 
-  fetchComments = async () => {
-    const comments = await readAllComment();
+  fetchComments = async (user_id, post_id) => {
+    const comments = await readAllComment(user_id, post_id);
     this.setState({ comments });
   }
 
-  handleCommentCreate = async (data) => {
-    const newComment = await createComment(data);
+  handleCommentCreate = async (user_id, post_id, data) => {
+    const newComment = await createComment(user_id, post_id, data);
     this.setState(prevState => ({
       posts: [...prevState.comments, newComment]
     }))
   }
 
-  handleCommentUpdate = async (id, data) => {
-    const newComment = await updateComment(id, data);
+  handleCommentUpdate = async (user_id, post_id, id, data) => {
+    const newComment = await updateComment(user_id, post_id, id, data);
     this.setState(prevState => ({
       posts: prevState.comments.map(comment => comment.id === parseInt(id) ? newComment : comment)
     }))
   }
 
-  handleCommentDelete = async (id) => {
-    await destroyComment(id);
+  handleCommentDelete = async (user_id, post_id, id) => {
+    await destroyComment(user_id, post_id, id);
     this.setState(prevState => ({
       comments: prevState.comments.filter(comment => comment.id !== id)
     }))
@@ -98,7 +104,7 @@ export default class Main extends Component {
     return (
       <main>
 
-        
+       
         <Route path='/user/:username' render={(props) => (
           <>
           < ProfileShow
@@ -116,6 +122,8 @@ export default class Main extends Component {
             {...props}
             currentUser={this.props.currentUser}
             posts={this.state.posts}
+            fetchComments={this.fetchComments}
+            comments={this.state.comments}
           />)} />
 
         <Route path='/editpost/:id' render={(props) => (
@@ -124,8 +132,9 @@ export default class Main extends Component {
             {...props}
             currentUser={this.props.currentUser}
             posts={this.state.posts}
-            fetchPosts={this.fetchPosts}
+            fetchOnePosts={this.fetchOnePosts}
             handlePostUpdate={this.handlePostUpdate}
+            post={this.state.post}
           />
         )} />
 

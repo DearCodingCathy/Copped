@@ -11,9 +11,21 @@ export default class PostEdit extends Component {
   }
 
   componentDidMount() {
-    // { fetchPosts }  this.props
-    this.props.fetchPosts(this.props.currentUser.id)
+    this.props.fetchOnePosts(this.props.currentUser.id, this.props.match.params.id);
+    this.setFormData()
   }
+
+
+
+  setFormData = () => {
+    
+    this.setState({
+      title: this.props.post.title,
+      img_url: this.props.post.img_url,
+      content: this.props.post.content,
+      location: this.props.post.location
+    })
+}
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,19 +36,27 @@ export default class PostEdit extends Component {
 
 
   render() {
-    // const { currentUser, handlePostUpdate } = this.props
-    const currentPost = this.props.posts.find(post => post.id === parseInt(this.props.match.params.id))
+    const { currentUser, handlePostUpdate, history } = this.props
+    // const currentPost = this.props.posts.find(post => post.id === parseInt(this.props.match.params.id))
     // console.log(currentPost)
 
-    if (currentPost) {
+    // if (currentPost) {
     return (
       <div>
-        <h2 classname=''>Edit Post</h2>
+        <h2 className=''>Edit Post</h2>
 
-        <img className='mt-4' src={currentPost.img_url} alt={currentPost.title} />
+        <img className='mt-4' src={this.props.post.img_url} alt={this.props.post.title} />
 
 
-        <form className='mb-5'>
+        <form className='mb-5'
+          onSubmit={(e) => {
+            e.preventDefault();
+            handlePostUpdate(currentUser.id, this.props.post.id, this.state);
+            history.push(`/user/${currentUser.username}`)
+          }
+          
+        }
+        >
           
           <div className='d-flex flex-column m-3'>
           <label>Update Post Image:</label>
@@ -44,28 +64,14 @@ export default class PostEdit extends Component {
           <input
             type='text'
               value={this.state.img_url}
-              placeholder={currentPost.img_url}
             name='img_url'
             onChange={this.handleChange}
             />
           </div>
 
-          {/* <h2>{currentPost.title}</h2> */}
-          <div className='d-flex flex-column m-3'>
-          <label>Title:</label>
-
-          <input
-            type='text'
-              value={this.state.title}
-              placeholder={currentPost.title}
-            name='title'
-            onChange={this.handleChange}
-            />
-            
-          </div>
+          
 
 
-          {/* <p>{currentPost.content}</p> */}
           <div className='d-flex flex-column m-3 '>
           <label>Content:</label>
 
@@ -73,7 +79,6 @@ export default class PostEdit extends Component {
               className='content-input'
             type='text'
               value={this.state.content}
-              placeholder={currentPost.content}
             name='content'
             onChange={this.handleChange}
             />
@@ -85,7 +90,6 @@ export default class PostEdit extends Component {
           <input
             type='text'
               value={this.state.location}
-            placeholder={currentPost.location}
             name='location'
             onChange={this.handleChange}
             />
@@ -95,8 +99,8 @@ export default class PostEdit extends Component {
         
       </div>
     )
-    } else {
-      return <h1>...Loading</h1>
-    }
+    // } else {
+    //   return <h1>...Loading</h1>
+    // }
   }
 }

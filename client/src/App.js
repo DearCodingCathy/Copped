@@ -47,28 +47,31 @@ class App extends Component {
 
   render() {
   return (
-    <div>
+  
       
-      <Header
-        currentUser={this.state.currentUser}
-      />
-      
-      {/* {this.state.currentUser && */}
-        <Main
+      <div className='page-container'>
+        <Header
           currentUser={this.state.currentUser}
-          handleLogin={this.handleLogin}
-        handleRegister={this.handleRegister}
-        handleLogout={this.handleLogout}
-
         />
-      {/* } */}
+        <div className='content-wrap'>
+          <Main
+            currentUser={this.state.currentUser}
+            handleLogin={this.handleLogin}
+            handleRegister={this.handleRegister}
+            handleLogout={this.handleLogout}
+
+          />
+        </div>
+        <Nav
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
+      </div>
+      
 
       
-      <Nav 
-      currentUser={this.state.currentUser}
-      handleLogout={this.handleLogout}
-      />
-    </div>
+     
+  
     );
   }
 }

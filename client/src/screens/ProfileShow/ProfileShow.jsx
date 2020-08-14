@@ -71,7 +71,7 @@ export default class ProfileShow extends Component {
               
 
               {this.props.posts.map(post =>
-            <div className='d-flex justify-content-center m-4'>
+            <div className='d-flex justify-content-center m-4 mb-5'>
                 <Card style={{ width: '40rem' }}>
                   <Card.Img variant="top" src={post.img_url} />
                     <Card.Body>
