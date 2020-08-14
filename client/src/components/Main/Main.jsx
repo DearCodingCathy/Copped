@@ -24,10 +24,10 @@ export default class Main extends Component {
 
   componentDidMount() {
     // debugger
-    const { currentUser } = this.props
-    if (currentUser) {
-      this.fetchPosts(currentUser.id);
-    }
+    // const { currentUser } = this.props
+    // if (this.props.currentUser) {
+      // this.fetchPosts(this.props.currentUser.id);
+    // }
     this.fetchComments();
 }
 
@@ -38,22 +38,22 @@ export default class Main extends Component {
     this.setState({ posts });
   }
 
-  handlePostCreate = async (data) => {
-    const newPost = await createPost(data);
+  handlePostCreate = async (id, data) => {
+    const newPost = await createPost(id, data);
     this.setState(prevState => ({
       posts: [...prevState.posts, newPost]
     }))
   }
 
-  handlePostUpdate = async (id, data) => {
-    const newPost = await updatePost(id, data);
+  handlePostUpdate = async (user_id, id, data) => {
+    const newPost = await updatePost(user_id, id, data);
     this.setState(prevState => ({
       posts: prevState.posts.map(post => post.id === parseInt(id) ? newPost : post)
     }))
   }
 
-  handlePostDelete = async (id) => {
-    await destroyPost(id);
+  handlePostDelete = async (user_id, id) => {
+    await destroyPost(user_id, id);
     this.setState(prevState => ({
       posts: prevState.posts.filter(post => post.id !== id)
     }))
@@ -89,45 +89,33 @@ export default class Main extends Component {
 
 
   render() {
-    const { handleLogin, handleRegister } = this.props;
+    const { handleLogin, handleRegister, handleLogout } = this.props;
+
+
+
+    if (this.props.currentUser) {
     return (
       <main>
-        <Route exact path='/' render={(props) => (
-          <UserLogin
-            {...props}
-            handleLogin={handleLogin}
-          />
-        )} />
 
-        <Route path='/register' render={(props) => (
-          
-        <UserRegister
-          { ...props }
-            handleRegister={handleRegister}
-          />
-        )} />
         
         <Route path='/user/:username' render={(props) => (
           <>
           < ProfileShow
             {...props}
-            currentUser={this.props.currentUser}
-            posts={this.state.posts}
+              currentUser={this.props.currentUser}
+              fetchPosts={this.fetchPosts}
+              posts={this.state.posts}
+              handleLogout={handleLogout}
           />
             </>
         )} />
-          
-
         <Route path='/post/:id' render={(props) => (
           
           <PostDetail
             {...props}
             currentUser={this.props.currentUser}
             posts={this.state.posts}
-          />
-
-          
-        )} />
+          />)} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }
@@ -143,5 +131,28 @@ export default class Main extends Component {
 
       </main>
     )
+    } else {
+      return (
+        <main>
+          <Route exact path='/' render={(props) => (
+            <UserLogin
+              {...props}
+              handleLogin={handleLogin}
+            />
+          )} />
+
+          <Route path='/register' render={(props) => (
+
+            <UserRegister
+              {...props}
+              handleRegister={handleRegister}
+            />
+          )} />
+</main>
+      )
   }
+}
+
+
+
 }

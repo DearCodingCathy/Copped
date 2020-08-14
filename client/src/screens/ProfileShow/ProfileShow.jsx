@@ -2,15 +2,22 @@ import React, { Component } from 'react'
 import { Tab, Tabs, Card, Button, DropdownButton, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BsFillGearFill, BsThreeDots } from 'react-icons/bs'
+import { Dialog } from "react-bootstrap-easy-dialog";
+
 
 
 export default class ProfileShow extends Component {
   constructor(props) {
     super(props)
   }
+
+  componentDidMount() {
+    // { fetchPosts }  this.props
+    this.props.fetchPosts(this.props.currentUser.id)
+  }
   
   render() {
-    const { currentUser } = this.props
+    const { currentUser, handleLogout, history } = this.props
     return (
       <div>
 
@@ -27,7 +34,31 @@ export default class ProfileShow extends Component {
                 :
                 <img className='rounded-circle custom-img' src='https://i.imgur.com/36nRvIA.jpg' alt='Blank' />
             }
-            <Link to={`/edit/${currentUser.username}`}><BsFillGearFill className='gear-icon text-dark' /></Link>
+
+            <Dialog>
+              {dialog => {
+                async function handleClick() {
+                  const confirmed = await dialog.confirm("Are you sure you want to log out?");
+                  console.log(confirmed);
+                  const logout = await confirmed ?
+                    (
+                      handleLogout(),
+                      history.push(`/`)
+                      )
+                      :
+                      null
+                  return logout
+                }
+                return <><BsFillGearFill onClick={handleClick} className='gear-icon text-dark' /> </>
+              }}
+            </Dialog> 
+
+
+
+
+
+
+            {/* <Link to={`/edit/${currentUser.username}`}><BsFillGearFill className='gear-icon text-dark' /></Link> */}
           </div>
           <h4>{currentUser.first_name} {currentUser.last_name}</h4>
           <p>Bio:</p>

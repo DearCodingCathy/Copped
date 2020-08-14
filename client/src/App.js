@@ -53,23 +53,21 @@ class App extends Component {
         currentUser={this.state.currentUser}
       />
       
-      {this.state.currentUser &&
+      {/* {this.state.currentUser && */}
         <Main
           currentUser={this.state.currentUser}
           handleLogin={this.handleLogin}
-          handleRegister={this.handleRegister}
+        handleRegister={this.handleRegister}
+        handleLogout={this.handleLogout}
+
         />
-      }
+      {/* } */}
 
       
       <Nav 
       currentUser={this.state.currentUser}
       handleLogout={this.handleLogout}
       />
-
-      {/* <UserInfo
-        currentUser={this.state.currentUser}
-      /> */}
     </div>
     );
   }

@@ -8629,6 +8629,11 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-bootstrap-easy-dialog@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-easy-dialog/-/react-bootstrap-easy-dialog-0.3.3.tgz#f8209b3f9b018824166fe66d181cf9bd8e7d6420"
+  integrity sha512-3CtBEDvmi+z+ot0+z4dUW08Y8/CdNnraH1lBx334xxe/DXdA9WbKkIer9nstd9F4txPC6j+D6UME+E0qo3p1OA==
+
 react-bootstrap@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.3.0.tgz#d9dde4ad554e9cd21d1465e8b5e5ef6679cae6a1"
