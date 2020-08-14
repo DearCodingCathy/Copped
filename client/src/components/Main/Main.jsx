@@ -7,6 +7,9 @@ import {createPost, readAllPost, readOnePost, updatePost, destroyPost} from '../
 import {createComment, readAllComment, readOneComment, updateComment, destroyComment } from '../../services/comments'
 import UserRegister from '../../screens/UserRegister/UserRegister'
 import ProfileShow from '../../screens/ProfileShow/ProfileShow'
+import PostDisplay from '../PostDisplay/PostDisplay'
+import UserInfo from "../UserInfo/UserInfo"
+import PostDetail from '../../screens/PostDetail/PostDetail'
 
 export default class Main extends Component {
   constructor(props) {
@@ -14,20 +17,24 @@ export default class Main extends Component {
 
     this.state = {
       posts: [],
-      comments: []
+      comments: [],
     }
   }
 
 
   componentDidMount() {
-    this.fetchPosts();
+    // debugger
+    const { currentUser } = this.props
+    if (currentUser) {
+      this.fetchPosts(currentUser.id);
+    }
     this.fetchComments();
 }
 
 
 
-  fetchPosts = async () => {
-    const posts = await readAllPost();
+  fetchPosts = async (id) => {
+    const posts = await readAllPost(id);
     this.setState({ posts });
   }
 
@@ -101,16 +108,26 @@ export default class Main extends Component {
         )} />
         
         <Route path='/user/:username' render={(props) => (
-          
+          <>
           < ProfileShow
             {...props}
-          currentUser={props.currentUser}
+            currentUser={this.props.currentUser}
+            posts={this.state.posts}
           />
+            </>
         )} />
+          
 
-        {/* <Route path='/' render={(props) => (
-          { ...props }
-        )} /> */}
+        <Route path='/post/:id' render={(props) => (
+          
+          <PostDetail
+            {...props}
+            currentUser={this.props.currentUser}
+            posts={this.state.posts}
+          />
+
+          
+        )} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }

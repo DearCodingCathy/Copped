@@ -29,7 +29,7 @@ export default class UserLogin extends Component {
         <div className='header'>Login</div>
         <div className='content'>
           <div className='l-image mx-3 align-self-center'>
-                <img className='login-img' src="https://i.imgur.com/jPhLW1W.jpg" />
+                <img className='login-img' src="https://i.imgur.com/jPhLW1W.jpg" alt='children sneakers' />
           </div>
           <div className='form'>
             <div className="form-group">
@@ -75,6 +75,7 @@ export default class UserLogin extends Component {
                 e.preventDefault();
                 handleLogin(this.state);
                 handleLogin(this.state);
+                history.push(`/user/${username}`)
               }}>
                 Login</button>
           

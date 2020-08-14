@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom'
 
 class App extends Component {
   state = {
-  currentUser: null
+  currentUser: ""
   }
 
   componentDidMount() {
@@ -53,16 +53,23 @@ class App extends Component {
         currentUser={this.state.currentUser}
       />
       
-      <Main
-        currentUser={this.state.currentUser}
-        handleLogin={this.handleLogin}
-        handleRegister={this.handleRegister}
-      />
+      {this.state.currentUser &&
+        <Main
+          currentUser={this.state.currentUser}
+          handleLogin={this.handleLogin}
+          handleRegister={this.handleRegister}
+        />
+      }
+
       
       <Nav 
       currentUser={this.state.currentUser}
       handleLogout={this.handleLogout}
       />
+
+      {/* <UserInfo
+        currentUser={this.state.currentUser}
+      /> */}
     </div>
     );
   }

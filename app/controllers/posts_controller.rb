@@ -42,6 +42,12 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
+  # All Posts
+  def all_post
+    @post = Post.all
+    render json: @post
+  end
+
   # PUT /comments/1/posts/2
   # def add_comment
   #   @post = Post.find(params[:id])
