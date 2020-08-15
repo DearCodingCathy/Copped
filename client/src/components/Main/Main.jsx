@@ -144,6 +144,8 @@ export default class Main extends Component {
           
           <CreatePost
             {...props}
+            currentUser={this.props.currentUser}
+            handlePostCreate={this.handlePostCreate}
           />
         )} />
 

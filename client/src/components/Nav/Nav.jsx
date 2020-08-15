@@ -14,13 +14,14 @@ export default function Navigation(props) {
         (
         <>
             <Navbar fixed='bottom' sticky='bottom' bg="light" variant="light">
-              <Nav className="">
-                <Link to='/allpost'><AiFillHome className='nav-icons text-dark'/></Link>
-                <Link to='/newpost'><MdAdd className='nav-icons text-dark'/></Link>
-                <Link to='/'><AiTwotoneFire className='nav-icons text-dark'/></Link>
+              <Nav className=" mx-auto">
+                <Link to='/allpost'><AiFillHome className='nav-icons text-dark mr-5 ml-5'/></Link>
+                <Link to='/newpost'><MdAdd className='nav-icons text-dark mr-5 ml-5'/></Link>
+                <Link to='/'><AiTwotoneFire className='nav-icons text-dark mr-5 ml-5'/></Link>
                 <Link to={`/user/${currentUser.username}`}>
-                  <img className='rounded-circle nav-img'src={currentUser.img_url} alt={currentUser.username} />
+                  <img className='rounded-circle nav-img mr-5 ml-5'src={currentUser.img_url} alt={currentUser.username} />
                 </Link>
+
               </Nav>
             </Navbar>
         </>

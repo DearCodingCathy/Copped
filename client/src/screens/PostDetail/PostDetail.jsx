@@ -4,16 +4,26 @@ import {Link} from 'react-router-dom'
 import { Component } from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { BsThreeDots, BsFillGearFill } from 'react-icons/bs'
+// import {readAllPost} from '../../services/posts'
 
 
 
 export default class PostDetail extends Component {
+  // state = {
+  //   post: []
+  // };
 
 
 
   componentDidMount() {
-  this.props.fetchComments(this.props.currentUser.id, this.props.match.params.id)
-}
+    this.props.fetchComments(this.props.currentUser.id, this.props.match.params.id)
+    // this.fetchPosts(this.props.match.params.id)
+  }
+  
+  // fetchPosts = async (id) => {
+  //   const posts = await readAllPost(id);
+  //   this.setState({ posts });
+  // }
 
 
   render() {
@@ -44,13 +54,15 @@ export default class PostDetail extends Component {
                 </Dropdown>
               </div>
             </div>
+            
+            <hr />
 
-            <div className='border'>
+            <div className=''>
               
 
             <div className='d-flex ml-4 mb-5'>
               <div className='mr-3'>
-                <img className='rounded-circle user-img' src={prod.user.img_url} alt={prod.user.username} />
+                  <Link to={`/user/${prod.user.username}`}><img className='rounded-circle user-img' src={prod.user.img_url} alt={prod.user.username} /></Link>
               </div>
               <div className='d-flex flex-column'>
                 <small>Written By:</small>

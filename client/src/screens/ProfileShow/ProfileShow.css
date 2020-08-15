@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+}
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+/* width: 300px; */
+}
+
+.gear-icon {
+  width: 3%;
+  height: 2%;
+}

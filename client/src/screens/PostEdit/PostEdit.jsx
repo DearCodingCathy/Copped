@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './PostEdit.css'
+import {readOnePost} from '../../services/posts'
 
 export default class PostEdit extends Component {
   state = {
@@ -11,21 +12,28 @@ export default class PostEdit extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchOnePosts(this.props.currentUser.id, this.props.match.params.id);
-    this.setFormData()
+    this.fetchOnePosts(this.props.currentUser.id, this.props.match.params.id);
   }
 
-
-
-  setFormData = () => {
-    
+  fetchOnePosts = async (user_id, id) => {
+    const post = await readOnePost(user_id, id)
     this.setState({
-      title: this.props.post.title,
-      img_url: this.props.post.img_url,
-      content: this.props.post.content,
-      location: this.props.post.location
+      title: post.title,
+      img_url: post.img_url,
+      content: post.content,
+      location: post.location
     })
-}
+  }
+
+//   setFormData = () => {
+    
+//     this.setState({
+//       title: this.props.post.title,
+//       img_url: this.props.post.img_url,
+//       content: this.props.post.content,
+//       location: this.props.post.location
+//     })
+// }
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,22 +45,19 @@ export default class PostEdit extends Component {
 
   render() {
     const { currentUser, handlePostUpdate, history } = this.props
-    // const currentPost = this.props.posts.find(post => post.id === parseInt(this.props.match.params.id))
-    // console.log(currentPost)
 
-    // if (currentPost) {
     return (
       <div>
         <h2 className=''>Edit Post</h2>
 
-        <img className='mt-4' src={this.props.post.img_url} alt={this.props.post.title} />
+        <img className='mt-4' src={this.state.img_url} alt={this.state.title} />
 
 
         <form className='mb-5'
           onSubmit={(e) => {
             e.preventDefault();
-            handlePostUpdate(currentUser.id, this.props.post.id, this.state);
-            history.push(`/user/${currentUser.username}`)
+            handlePostUpdate(currentUser.id, this.props.match.params.id, this.state);
+            history.push(`/user/${currentUser.id}`)
           }
           
         }
@@ -73,6 +78,16 @@ export default class PostEdit extends Component {
 
 
           <div className='d-flex flex-column m-3 '>
+
+            <label>Update Title:</label>
+
+            <input
+              type='text'
+              value={this.state.title}
+              name='title'
+              onChange={this.handleChange}
+            />
+          
           <label>Content:</label>
 
             <textarea
@@ -99,8 +114,5 @@ export default class PostEdit extends Component {
         
       </div>
     )
-    // } else {
-    //   return <h1>...Loading</h1>
-    // }
   }
 }

@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { Tab, Tabs, Card, Button, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BsFillGearFill, BsThreeDots } from 'react-icons/bs'
+
+import { FiLogOut } from 'react-icons/fi'
 import { Dialog } from "react-bootstrap-easy-dialog";
+import './ProfileShow.css'
 
 
 
@@ -46,16 +49,10 @@ export default class ProfileShow extends Component {
                       null
                   return logout
                 }
-                return <><BsFillGearFill onClick={handleClick} className='gear-icon text-dark' /> </>
+                return <><FiLogOut onClick={handleClick} className='gear-icon text-dark' /> </>
               }}
             </Dialog> 
 
-
-
-
-
-
-            {/* <Link to={`/edit/${currentUser.username}`}><BsFillGearFill className='gear-icon text-dark' /></Link> */}
           </div>
           <h4>{currentUser.first_name} {currentUser.last_name}</h4>
           <p>Bio:</p>
@@ -71,48 +68,23 @@ export default class ProfileShow extends Component {
               
 
               {this.props.posts.map(post =>
-            <div className='d-flex justify-content-center m-4 mb-5'>
-                <Card style={{ width: '40rem' }}>
-                  <Card.Img variant="top" src={post.img_url} />
+                <div className=' d-flex justify-content-center m-4 mb-5 '>
+                  
+
+                <Card style={{ width: '50rem' }}>
+                    <Card.Img variant="top" src={post.img_url} style={{ height: '15rem' }} />
                     <Card.Body>
                       <div className='d-flex justify-content-between'>
                       <Card.Title>{post.title}</Card.Title>
-                        
-                        {/* <Dropdown.toggle id="dropdown-basic-button" title={<BsThreeDots />}>
-                          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        </Dropdown.toggle> */}
-                        
-{/* 
-                        <Dropdown>
-                          <Dropdown.Toggle variant="light" id="dropdown-basic">
-                            <BsThreeDots />
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu>
-                            <Link to={`/editpost/${post.id}`}>Edit Post</Link>
-                            <Dropdown.Item href="" className='text-danger'>Delete Post</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown> */}
                       </div>
                     <Card.Text>
                       {post.content}
                   </Card.Text>
                       <Link to={`/post/${post.id}`}><Button variant="primary">Read More</Button></Link>
                   </Card.Body>
-                </Card>
+                  </Card>
                 </div>
-                
-          
-            // <div className='card m-5'><h4>{post.title}</h4>
-            //   <p>{post.content}</p>
-            //   {/* <img src={post.img_url} alt={post.title} /> */}
-            // </div>
               )}
-              
-
-
       </Tab>
       <Tab eventKey="profile" title="Sneaker Post">
 
