@@ -84,7 +84,7 @@ export default class ProfileShow extends Component {
                           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                         </Dropdown.toggle> */}
                         
-
+{/* 
                         <Dropdown>
                           <Dropdown.Toggle variant="light" id="dropdown-basic">
                             <BsThreeDots />
@@ -94,7 +94,7 @@ export default class ProfileShow extends Component {
                             <Link to={`/editpost/${post.id}`}>Edit Post</Link>
                             <Dropdown.Item href="" className='text-danger'>Delete Post</Dropdown.Item>
                           </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                       </div>
                     <Card.Text>
                       {post.content}

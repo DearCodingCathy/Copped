@@ -11,6 +11,8 @@ import ProfileShow from '../../screens/ProfileShow/ProfileShow'
 // import UserInfo from "../UserInfo/UserInfo"
 import PostDetail from '../../screens/PostDetail/PostDetail'
 import PostEdit from '../../screens/PostEdit/PostEdit'
+import CreatePost from '../../screens/CreatePost/CreatePost'
+import AllPost from '../../screens/AllPost/AllPost'
 
 export default class Main extends Component {
   constructor(props) {
@@ -138,14 +140,26 @@ export default class Main extends Component {
           />
         )} />
 
-        {/* <Route path='/' render={(props) => (
-          { ...props }
-        )} /> */}
+        <Route path='/newpost' render={(props) => (
+          
+          <CreatePost
+            {...props}
+          />
+        )} />
+
+        <Route path='/allpost' render={(props) => (
+        <AllPost
+            {...props}
+          />
+        )} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }
         )} /> */}
 
+        {/* <Route path='/' render={(props) => (
+          { ...props }
+        )} /> */}
       </main>
     )
     } else {

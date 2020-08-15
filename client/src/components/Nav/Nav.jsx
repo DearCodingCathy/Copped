@@ -15,8 +15,8 @@ export default function Navigation(props) {
         <>
             <Navbar fixed='bottom' sticky='bottom' bg="light" variant="light">
               <Nav className="">
-                <Link to='/'><AiFillHome className='nav-icons text-dark'/></Link>
-                <Link to='/'><MdAdd className='nav-icons text-dark'/></Link>
+                <Link to='/allpost'><AiFillHome className='nav-icons text-dark'/></Link>
+                <Link to='/newpost'><MdAdd className='nav-icons text-dark'/></Link>
                 <Link to='/'><AiTwotoneFire className='nav-icons text-dark'/></Link>
                 <Link to={`/user/${currentUser.username}`}>
                   <img className='rounded-circle nav-img'src={currentUser.img_url} alt={currentUser.username} />
