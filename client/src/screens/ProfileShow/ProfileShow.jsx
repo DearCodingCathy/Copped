@@ -10,10 +10,17 @@ import './ProfileShow.css'
 
 
 export default class ProfileShow extends Component {
+  state = {
+    date: ''
+  }
 
   componentDidMount() {
     // { fetchPosts }  this.props
     this.props.fetchPosts(this.props.currentUser.id)
+
+    this.setState({
+      date: new Date(this.props.currentUser.created_at).toDateString()
+    })
   }
   
   render() {
@@ -55,6 +62,7 @@ export default class ProfileShow extends Component {
 
           </div>
           <h4>{currentUser.first_name} {currentUser.last_name}</h4>
+          <p>Member Since: {this.state.date}</p>
           <p>Bio:</p>
           <p>{currentUser.bio}</p>
           {/* <button>Edit Profile</button> */}

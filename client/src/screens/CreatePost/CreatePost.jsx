@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './CreatePost.css'
 export default class CreatePost extends Component {
 
   state = {
@@ -24,9 +24,9 @@ export default class CreatePost extends Component {
       <div>
         <h2>Create Post</h2>
 
-        <div className='d-flex justify-content-center'>
+        <div className='d-flex justify-content-center '>
 
-          <img className='mt-4 mx-auto' src={this.state.img_url} alt={this.state.title} />
+          <img className='mt-4 mx-auto create-img' src={this.state.img_url} alt={this.state.title} />
 
 
         </div>

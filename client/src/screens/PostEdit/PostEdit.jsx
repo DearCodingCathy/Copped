@@ -50,8 +50,13 @@ export default class PostEdit extends Component {
       <div>
         <h2 className=''>Edit Post</h2>
 
-        <img className='mt-4' src={this.state.img_url} alt={this.state.title} />
+        <div className='d-flex justify-content-center'>
 
+
+        
+
+        <img className='mt-4 create-img' src={this.state.img_url} alt={this.state.title} />
+        </div>
 
         <form className='mb-5'
           onSubmit={(e) => {

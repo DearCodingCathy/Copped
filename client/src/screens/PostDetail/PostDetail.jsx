@@ -3,31 +3,57 @@ import './PostDetail.css'
 import {Link} from 'react-router-dom'
 import { Component } from 'react'
 import { Dropdown } from 'react-bootstrap'
-import { BsThreeDots, BsFillGearFill } from 'react-icons/bs'
+import { BsFillGearFill } from 'react-icons/bs'
+import { getAllPost } from '../../services/posts'
+import { createComment } from '../../services/comments'
 // import {readAllPost} from '../../services/posts'
+
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 
 export default class PostDetail extends Component {
-  // state = {
-  //   post: []
-  // };
+  state = {
+    posts: [],
+    date: '',
+    content: ''
+}
 
 
 
   componentDidMount() {
     this.props.fetchComments(this.props.currentUser.id, this.props.match.params.id)
-    // this.fetchPosts(this.props.match.params.id)
-  }
-  
-  // fetchPosts = async (id) => {
-  //   const posts = await readAllPost(id);
-  //   this.setState({ posts });
-  // }
+    this.fetchAllPosts()
+    
+    this.setState({
+      date: new Date(this.props.currentUser.created_at).toDateString()
+    })
 
+  }
+
+  fetchAllPosts = async () => {
+    const posts = await getAllPost()
+    this.setState({ posts });
+  }
+
+  handleCommentCreate = async (user_id, post_id, data) => {
+    const newComment = await createComment(user_id, post_id, data);
+    this.setState(prevState => ({
+      comment: [...prevState.comments, newComment]
+    }))
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
 
   render() {
-    const prod = this.props.posts.find(post => post.id === parseInt(this.props.match.params.id))
+    const { currentUser, handleCommentCreate, handlePostDelete, history } = this.props
+
+    const prod = this.state.posts.find(post => post.id === parseInt(this.props.match.params.id))
 
     if (prod) {
       return (
@@ -48,8 +74,19 @@ export default class PostDetail extends Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Link to={`/editpost/${prod.id}`}>Edit Post</Link>
-                <Dropdown.Item href="" className='text-danger'>Delete Post</Dropdown.Item>
+                    <Link to={`/editpost/${prod.id}`}>Edit Post</Link>
+                    
+
+                    
+
+
+                    <button
+                      onClick={() =>
+                        this.props.handlePostDelete(this.props.currentUser.id, this.props.match.params.id)}
+                    
+                      className='text-danger'>
+                      Delete Post
+                      </button>
               </Dropdown.Menu>
                 </Dropdown>
               </div>
@@ -62,16 +99,15 @@ export default class PostDetail extends Component {
 
             <div className='d-flex ml-4 mb-5'>
               <div className='mr-3'>
-                  <Link to={`/user/${prod.user.username}`}><img className='rounded-circle user-img' src={prod.user.img_url} alt={prod.user.username} /></Link>
+                  {/* <Link to={`/user/${prod.user.username}`}><img className='rounded-circle user-img' src={prod.user.img_url} alt={prod.user.username} /></Link> */}
               </div>
               <div className='d-flex flex-column'>
-                <small>Written By:</small>
-                <small>{prod.user.first_name} {prod.user.last_name}</small>
+                {/* <small>Written By:</small> */}
+                {/* <small>{prod.user.first_name} {prod.user.last_name}</small> */}
                 <small>{prod.location}</small>
-                <small>{prod.created_at}</small>
+                <small>Posted: {this.state.date}</small>
               </div>
             </div>
-        
 
             <div className='mt-5 text-container ml-5 '>
               <p>{prod.content}</p>
@@ -80,24 +116,38 @@ export default class PostDetail extends Component {
           </div>
           
 
-
-
           <div className='comments-container border '>
             <h2 className='m-5'>Comments</h2>
             <hr />
             <div>
               {
                 this.props.comments.map(comment => (
-                  <div className='align-self-center'>
-                    <small>{comment.created_at}</small>
-                    <p>{comment.content}</p>
+                  <div className='align-self-center border m-2'>
+                    <p className='p-2'>{comment.content}</p>
+                    <small><em>{this.state.date}</em></small>
                   </div>
                 ))
               }
             </div>
 
+            <div className='add-comment m-2'>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                this.handleCommentCreate(this.props.currentUser.id, this.props.match.params.id, {comment: this.state.content})
+              }}
+                >
+                <input
+                  onChange={this.handleChange}
+                  name='comment'
+                  placeholder='Add a new comment'
+                />
+                <button className='btn mt-3'>Add Comment</button>
+              </form>
+
+            </div>
+
           </div>
-        
+
         </div>
       )
     } else {

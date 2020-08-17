@@ -21,7 +21,7 @@ export default class Main extends Component {
     this.state = {
       posts: [],
       comments: [],
-      post: []
+      post: [],
     }
   }
 
@@ -35,6 +35,8 @@ export default class Main extends Component {
     // this.fetchComments();
     this.fetchOnePosts();
 }
+
+  
 
 
   fetchOnePosts = async (user_id, id) => {
@@ -126,6 +128,8 @@ export default class Main extends Component {
             posts={this.state.posts}
             fetchComments={this.fetchComments}
             comments={this.state.comments}
+            handleCommentCreate={this.handleCommentCreate}
+            handlePostDelete={this.handlePostDelete}
           />)} />
 
         <Route path='/editpost/:id' render={(props) => (
