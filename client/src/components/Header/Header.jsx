@@ -18,7 +18,6 @@ export default function Header(props) {
               <Link to='/'><h1 className='text-light'>Copped</h1></Link>
           )
 }
-      {/* <hr/> */}
       </header>
     </div>
   )

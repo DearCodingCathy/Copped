@@ -70,11 +70,6 @@ export default function () {
           <Card className="text-white" style={{ width: '16rem' }}>
             <Card.Img src={post} alt={post} />
             <Card.ImgOverlay>
-              {/* <Card.Text>
-                This is a wider card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-    </Card.Text> */}
-              {/* <Card.Text>Last updated 3 mins ago</Card.Text> */}
             </Card.ImgOverlay>
             </Card>
           )

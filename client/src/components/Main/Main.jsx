@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 
-import UserLogin from '../../screens/UserLogin/UserLogin'
-
 import {createPost, readAllPost, readOnePost, updatePost, destroyPost} from '../../services/posts'
 import {createComment, readAllComment, updateComment, destroyComment } from '../../services/comments'
+
 import UserRegister from '../../screens/UserRegister/UserRegister'
 import ProfileShow from '../../screens/ProfileShow/ProfileShow'
-// import PostDisplay from '../PostDisplay/PostDisplay'
-// import UserInfo from "../UserInfo/UserInfo"
 import PostDetail from '../../screens/PostDetail/PostDetail'
 import PostEdit from '../../screens/PostEdit/PostEdit'
 import CreatePost from '../../screens/CreatePost/CreatePost'
 import AllPost from '../../screens/AllPost/AllPost'
 import StreetHeat from '../../screens/StreetHeat/StreetHeat'
+import UserLogin from '../../screens/UserLogin/UserLogin'
+
 
 export default class Main extends Component {
   constructor(props) {
@@ -28,17 +27,8 @@ export default class Main extends Component {
 
 
   componentDidMount() {
-    // debugger
-    // const { currentUser } = this.props
-    // if (this.props.currentUser) {
-      // this.fetchPosts(this.props.currentUser.id);
-    // }
-    // this.fetchComments();
     this.fetchOnePosts();
 }
-
-  
-
 
   fetchOnePosts = async (user_id, id) => {
     const post = await readOnePost(user_id, id)
@@ -71,7 +61,6 @@ export default class Main extends Component {
     }))
   }
 
-
   fetchComments = async (user_id, post_id) => {
     const comments = await readAllComment(user_id, post_id);
     this.setState({ comments });
@@ -98,12 +87,8 @@ export default class Main extends Component {
     }))
   }
 
-
-
   render() {
     const { handleLogin, handleRegister, handleLogout } = this.props;
-
-
 
     if (this.props.currentUser) {
     return (
@@ -163,10 +148,7 @@ export default class Main extends Component {
             {...props}
           />
         )} />
-
-        {/* <Route path='/' render={(props) => (
-          { ...props }
-        )} /> */}
+        
       </main>
     )
     } else {
