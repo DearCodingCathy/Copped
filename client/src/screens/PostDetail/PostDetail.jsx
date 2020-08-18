@@ -5,7 +5,7 @@ import { Component } from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { BsFillGearFill } from 'react-icons/bs'
 import { getAllPost } from '../../services/posts'
-import { createComment } from '../../services/comments'
+import { createComment, readAllComment } from '../../services/comments'
 // import {readAllPost} from '../../services/posts'
 
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -16,19 +16,25 @@ export default class PostDetail extends Component {
   state = {
     posts: [],
     date: '',
+    comments:[],
     content: ''
 }
 
 
 
   componentDidMount() {
-    this.props.fetchComments(this.props.currentUser.id, this.props.match.params.id)
+    this.fetchComments(this.props.currentUser.id, this.props.match.params.id)
     this.fetchAllPosts()
     
     this.setState({
       date: new Date(this.props.currentUser.created_at).toDateString()
     })
 
+  }
+
+  fetchComments = async (user_id, post_id) => {
+    const comments = await readAllComment(user_id, post_id);
+    this.setState({ comments });
   }
 
   fetchAllPosts = async () => {
@@ -39,7 +45,7 @@ export default class PostDetail extends Component {
   handleCommentCreate = async (user_id, post_id, data) => {
     const newComment = await createComment(user_id, post_id, data);
     this.setState(prevState => ({
-      comment: [...prevState.comments, newComment]
+      comments: [...prevState.comments, newComment]
     }))
   }
 
@@ -48,6 +54,11 @@ export default class PostDetail extends Component {
     this.setState({
       [name]: value
     })
+  }
+
+  handleDelete = () => {
+    this.props.handlePostDelete(this.props.currentUser.id, this.props.match.params.id)
+    this.props.history.push(`/user/${this.props.currentUser.username}`)
   }
 
   render() {
@@ -75,14 +86,9 @@ export default class PostDetail extends Component {
 
               <Dropdown.Menu>
                     <Link to={`/editpost/${prod.id}`}>Edit Post</Link>
-                    
-
-                    
-
-
                     <button
-                      onClick={() =>
-                        this.props.handlePostDelete(this.props.currentUser.id, this.props.match.params.id)}
+                      className='btn btn-link'
+                      onClick={this.handleDelete}
                     
                       className='text-danger'>
                       Delete Post
@@ -121,7 +127,7 @@ export default class PostDetail extends Component {
             <hr />
             <div>
               {
-                this.props.comments.map(comment => (
+                this.state.comments.map(comment => (
                   <div className='align-self-center border m-2'>
                     <p className='p-2'>{comment.content}</p>
                     <small><em>{this.state.date}</em></small>
@@ -133,12 +139,12 @@ export default class PostDetail extends Component {
             <div className='add-comment m-2'>
               <form onSubmit={(e) => {
                 e.preventDefault();
-                this.handleCommentCreate(this.props.currentUser.id, this.props.match.params.id, {comment: this.state.content})
+                this.handleCommentCreate(this.props.currentUser.id, this.props.match.params.id, {content: this.state.content})
               }}
                 >
                 <input
                   onChange={this.handleChange}
-                  name='comment'
+                  name='content'
                   placeholder='Add a new comment'
                 />
                 <button className='btn mt-3'>Add Comment</button>

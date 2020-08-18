@@ -10,3 +10,8 @@
 .user-img {
   width: 3em;
 }
+
+.delete-btn {
+  /* border: none; */
+  background-color: white;
+}

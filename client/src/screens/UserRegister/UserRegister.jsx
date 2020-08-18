@@ -34,7 +34,6 @@ export default class UserRegister extends Component {
         <div className='header'>Register</div>
           <div className='content'>
             <div className='r-image align-self-center'>
-              {/* <img className='login-img ' src="https://www.clipartmax.com/png/small/438-4380277_shoe-shoes-shoeboxes-nike-adidas-jordans-boxes-box-cartoon-nike-shoe-box.png" alt="Shoe Shoes Shoeboxes Nike Adidas Jordans Boxes Box - Cartoon Nike Shoe Box @clipartmax.com" /> */}
             </div>
             <div className='form mx-5'>
               <div className='form-group'>                
@@ -102,10 +101,11 @@ export default class UserRegister extends Component {
                   Password:
                   </label>
                 <input
-                  className='r-input-contain'
+                    className='r-input-contain'
+                    type='password'
                     placeholder='Password'
                     value={password}
-                    name='Password'
+                    name='password'
                     required
                     autoFocus
                     onChange={this.handleChange}
