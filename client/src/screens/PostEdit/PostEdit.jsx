@@ -48,17 +48,15 @@ export default class PostEdit extends Component {
 
     return (
       <div>
-        <h2 className=''>Edit Post</h2>
+        <div className='d-flex justify-content-center mt-3'>
+          <h2 className=''>Edit Post</h2>
+        </div>
 
         <div className='d-flex justify-content-center'>
-
-
-        
-
         <img className='mt-4 create-img' src={this.state.img_url} alt={this.state.title} />
         </div>
 
-        <form className='mb-5'
+        <form className='mb-5 d-flex flex-column'
           onSubmit={(e) => {
             e.preventDefault();
             handlePostUpdate(currentUser.id, this.props.match.params.id, this.state);
@@ -70,7 +68,6 @@ export default class PostEdit extends Component {
           
           <div className='d-flex flex-column m-3'>
           <label>Update Post Image:</label>
-
           <input
             type='text'
               value={this.state.img_url}
@@ -78,14 +75,10 @@ export default class PostEdit extends Component {
             onChange={this.handleChange}
             />
           </div>
-
           
-
-
           <div className='d-flex flex-column m-3 '>
 
             <label>Update Title:</label>
-
             <input
               type='text'
               value={this.state.title}
@@ -94,7 +87,6 @@ export default class PostEdit extends Component {
             />
           
           <label>Content:</label>
-
             <textarea
               className='content-input'
             type='text'
@@ -105,7 +97,6 @@ export default class PostEdit extends Component {
           </div>
 
           <div className='d-flex flex-column m-3 mb-5'>
-
           <label>Location:</label>
           <input
             type='text'
@@ -114,7 +105,7 @@ export default class PostEdit extends Component {
             onChange={this.handleChange}
             />
             </div>
-          <button>Update Post</button>
+          <button className='btn mx-5'>Update Post</button>
     </form>
         
       </div>

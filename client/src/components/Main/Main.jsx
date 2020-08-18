@@ -13,6 +13,7 @@ import PostDetail from '../../screens/PostDetail/PostDetail'
 import PostEdit from '../../screens/PostEdit/PostEdit'
 import CreatePost from '../../screens/CreatePost/CreatePost'
 import AllPost from '../../screens/AllPost/AllPost'
+import StreetHeat from '../../screens/StreetHeat/StreetHeat'
 
 export default class Main extends Component {
   constructor(props) {
@@ -107,8 +108,6 @@ export default class Main extends Component {
     if (this.props.currentUser) {
     return (
       <main>
-
-       
         <Route path='/user/:username' render={(props) => (
           <>
           < ProfileShow
@@ -159,9 +158,11 @@ export default class Main extends Component {
           />
         )} />
 
-        {/* <Route path='/' render={(props) => (
-          { ...props }
-        )} /> */}
+        <Route path='/streetheat' render={(props) => (
+          <StreetHeat
+            {...props}
+          />
+        )} />
 
         {/* <Route path='/' render={(props) => (
           { ...props }

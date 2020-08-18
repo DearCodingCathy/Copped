@@ -21,17 +21,21 @@ export default class AllPost extends Component {
   render() {
     return (
       <div>
-        <h1 className=''>All Posts</h1>
+        <div className='d-flex justify-content-center mt-3'>
+          <h1 className='mx-auto'>All Posts</h1>
+</div>
 
         {this.state.post.map(post =>
           <div className=' d-flex justify-content-center m-4 mb-5 '>
 
 
             <Card style={{ width: '50rem' }}>
+              <Card.Header>
+                <Card.Title>{post.title}</Card.Title>
+              </Card.Header>
               <Card.Img variant="top" src={post.img_url} style={{ height: '15rem' }} />
               <Card.Body>
                 <div className='d-flex justify-content-between'>
-                  <Card.Title>{post.title}</Card.Title>
                 </div>
                 <Card.Text>
                   {post.content}

@@ -22,18 +22,18 @@ export default class CreatePost extends Component {
 
     return (
       <div>
-        <h2>Create Post</h2>
+        <div className='d-flex justify-content-center mt-2'>
+          <h2 >Create Post</h2>
+        </div>
 
+        
         <div className='d-flex justify-content-center '>
-
           <img className='mt-4 mx-auto create-img' src={this.state.img_url} alt={this.state.title} />
-
-
         </div>
 
 
 
-        <form className='mb-5'
+        <form className='mb-5 d-flex flex-column justify-content-center'
           onSubmit={(e) => {
             e.preventDefault();
             handlePostCreate(currentUser.id, this.state);
@@ -90,7 +90,9 @@ export default class CreatePost extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button>Create Post</button>
+          <button
+          className='btn mx-5'
+          >Create Post</button>
         </form>
 
       </div>

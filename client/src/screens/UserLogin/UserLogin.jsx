@@ -26,7 +26,7 @@ export default class UserLogin extends Component {
     <main className='login-main'>
       <div className='base-container'>
         <div className='card p-4 align-items-center mt-4 mb-5'>
-        <div className='header'>Login</div>
+        <div className='login-header'>Login</div>
         <div className='content'>
           <div className='l-image mx-3 align-self-center'>
                 <img className='login-img' src="https://i.imgur.com/jPhLW1W.jpg" alt='children sneakers' />
@@ -73,9 +73,12 @@ export default class UserLogin extends Component {
         <div className='footer'>
               <button className='btn' onClick={(e) => {
                 e.preventDefault();
-                handleLogin(this.state);
-                handleLogin(this.state);
-                history.push(`/user/${username}`)
+                if (username === '' || password === '') {
+                  alert('Please enter your Username and Password')
+                } else {
+                  handleLogin(this.state);
+                  history.push(`/user/${username}`)
+                }
               }}>
                 Login</button>
           

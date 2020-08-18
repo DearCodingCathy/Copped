@@ -6,9 +6,7 @@ import { Dropdown } from 'react-bootstrap'
 import { BsFillGearFill } from 'react-icons/bs'
 import { getAllPost } from '../../services/posts'
 import { createComment, readAllComment } from '../../services/comments'
-// import {readAllPost} from '../../services/posts'
 
-import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 
@@ -20,8 +18,6 @@ export default class PostDetail extends Component {
     content: ''
 }
 
-
-
   componentDidMount() {
     this.fetchComments(this.props.currentUser.id, this.props.match.params.id)
     this.fetchAllPosts()
@@ -29,7 +25,6 @@ export default class PostDetail extends Component {
     this.setState({
       date: new Date(this.props.currentUser.created_at).toDateString()
     })
-
   }
 
   fetchComments = async (user_id, post_id) => {
@@ -62,15 +57,14 @@ export default class PostDetail extends Component {
   }
 
   render() {
-    const { currentUser, handleCommentCreate, handlePostDelete, history } = this.props
 
     const prod = this.state.posts.find(post => post.id === parseInt(this.props.match.params.id))
 
     if (prod) {
       return (
 
-        <div className='d-flex flex-row'>
-          <div className='container border d-flex flex-column justify-items-center mb-5'>
+        <div className='d-flex flex-column'>
+          <div className='container border d-flex flex-column justify-items-center mb-4'>
             <img className='prod-img align-self-center mt-5' src={prod.img_url} alt={prod.title} />
             
             <div className='d-flex flex-row justify-content-center'>
@@ -85,14 +79,15 @@ export default class PostDetail extends Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                    <Link to={`/editpost/${prod.id}`}>Edit Post</Link>
-                    <button
-                      className='btn btn-link'
+                    <Link
+                      className='ml-4'
+                      to={`/editpost/${prod.id}`}
+                    >Edit Post</Link>
+                    <Dropdown.Item
                       onClick={this.handleDelete}
-                    
                       className='text-danger'>
                       Delete Post
-                      </button>
+                      </Dropdown.Item>
               </Dropdown.Menu>
                 </Dropdown>
               </div>
@@ -110,7 +105,7 @@ export default class PostDetail extends Component {
               <div className='d-flex flex-column'>
                 {/* <small>Written By:</small> */}
                 {/* <small>{prod.user.first_name} {prod.user.last_name}</small> */}
-                <small>{prod.location}</small>
+                <small>Location: {prod.location}</small>
                 <small>Posted: {this.state.date}</small>
               </div>
             </div>
@@ -122,13 +117,13 @@ export default class PostDetail extends Component {
           </div>
           
 
-          <div className='comments-container border '>
-            <h2 className='m-5'>Comments</h2>
+          <div className='comments-container  mx-5 mb-5'>
+            <h2 className='m-3'>Comments:</h2>
             <hr />
             <div>
               {
                 this.state.comments.map(comment => (
-                  <div className='align-self-center border m-2'>
+                  <div className='align-self-center border mx-5 mb-1'>
                     <p className='p-2'>{comment.content}</p>
                     <small><em>{this.state.date}</em></small>
                   </div>
@@ -136,18 +131,24 @@ export default class PostDetail extends Component {
               }
             </div>
 
-            <div className='add-comment m-2'>
+            <div className='add-comment m-2 mb-5'>
               <form onSubmit={(e) => {
                 e.preventDefault();
-                this.handleCommentCreate(this.props.currentUser.id, this.props.match.params.id, {content: this.state.content})
+                this.handleCommentCreate(this.props.currentUser.id, this.props.match.params.id, { content: this.state.content })
+                this.setState({
+                  content: ''
+                })
               }}
-                >
-                <input
+              >
+                <div className='d-flex  flex-column mx-5'>
+                  <input
+                    className='p-3'
                   onChange={this.handleChange}
                   name='content'
                   placeholder='Add a new comment'
                 />
-                <button className='btn mt-3'>Add Comment</button>
+                  <button className='btn mt-3'>Add new Comment</button>
+                </div>
               </form>
 
             </div>

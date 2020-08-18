@@ -11,7 +11,7 @@ export default function Header(props) {
       {
         currentUser ?
           (
-            <Link to='/allposts'><h1 className='text-light'>Copped</h1></Link>
+            <Link to='/allpost'><h1 className='text-light'>Copped</h1></Link>
           )
           :
           (

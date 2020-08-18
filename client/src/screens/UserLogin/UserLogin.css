@@ -5,10 +5,12 @@
   -o-background-size: cover;
   background-size: cover;
   height: auto;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
   display: flex;
   justify-content: center;
   flex-flow: column nowrap;
+  font-family: 'Oswald', sans-serif;
+
 }
 
 .base-container {
@@ -18,9 +20,9 @@ flex-direction: column;
 align-items: center;
 }
 
-.header {
+.login-header {
 font-size: 24px;
-font-family: "Open Sans", sans-serif;
+font-family: 'Oswald', sans-serif;
 }
 
 .content {
@@ -52,14 +54,16 @@ width: fit-content;
 }
 .login-label {
 font-size: 20px;
+font-family: 'Oswald', sans-serif;
+font-weight: 200;
 }
 .input-contain {
-/* margin-top: 6px; */
 min-width: 18em;
 height: 37px;
 padding: 0px 10px;
 font-size: 16px;
-font-family: "Open Sans", sans-serif;
+font-family: 'Oswald', sans-serif;
+/* font-weight: 200; */
 background-color: #f3f3f3;
 border: 0;
 border-radius: 4px;
@@ -110,8 +114,8 @@ position: absolute;
 right: -40%;
 border-radius: 4px;
 margin-top: -25px;
-/* z-index: 1; */
-/* transition: all 400ms ease-in-out; */
-/* cursor: pointer; */
 box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
+font-family: 'Oswald', sans-serif;
+/* font-weight: 200; */
+
 }

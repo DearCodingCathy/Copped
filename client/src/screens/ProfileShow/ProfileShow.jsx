@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Tab, Tabs, Card, Button, Dropdown } from 'react-bootstrap'
+import { Tab, Tabs, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { BsFillGearFill, BsThreeDots } from 'react-icons/bs'
-
 import { FiLogOut } from 'react-icons/fi'
 import { Dialog } from "react-bootstrap-easy-dialog";
 import './ProfileShow.css'
@@ -15,7 +13,6 @@ export default class ProfileShow extends Component {
   }
 
   componentDidMount() {
-    // { fetchPosts }  this.props
     this.props.fetchPosts(this.props.currentUser.id)
 
     this.setState({
@@ -65,7 +62,6 @@ export default class ProfileShow extends Component {
           <p>Member Since: {this.state.date}</p>
           <p>Bio:</p>
           <p>{currentUser.bio}</p>
-          {/* <button>Edit Profile</button> */}
           <hr />
         </div>
 
@@ -79,11 +75,13 @@ export default class ProfileShow extends Component {
                 <div className=' d-flex justify-content-center m-4 mb-5 '>
                   
 
-                <Card style={{ width: '50rem' }}>
+                  <Card style={{ width: '50rem' }}>
+                    <Card.Header>
+                      <Card.Title>{post.title}</Card.Title>
+                    </Card.Header>
                     <Card.Img variant="top" src={post.img_url} style={{ height: '15rem' }} />
                     <Card.Body>
                       <div className='d-flex justify-content-between'>
-                      <Card.Title>{post.title}</Card.Title>
                       </div>
                     <Card.Text>
                       {post.content}
@@ -97,8 +95,6 @@ export default class ProfileShow extends Component {
       <Tab eventKey="profile" title="Sneaker Post">
 
       </Tab>
-      {/* <Tab eventKey="contact" title="Contact" >
-      </Tab> */}
     </Tabs> 
         </div>
       </div>

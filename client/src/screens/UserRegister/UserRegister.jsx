@@ -31,7 +31,7 @@ export default class UserRegister extends Component {
       <main className='register-main'>
       <div className='base-container'>
         <div className='card p-4 align-items-center mt-3 mb-5'>
-        <div className='header'>Register</div>
+        <div className='reg-header'>Register</div>
           <div className='content'>
             <div className='r-image align-self-center'>
             </div>
