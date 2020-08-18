@@ -28,10 +28,8 @@ export default function UserInfo(props) {
             <h4>{currentUser.first_name} {currentUser.last_name}</h4>
             <p>Bio:</p>
             <p>{currentUser.bio}</p>
-            {/* <button>Edit Profile</button> */}
             <hr />
           </div>
-
           )
             :
           (

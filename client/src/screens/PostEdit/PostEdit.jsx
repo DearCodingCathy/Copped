@@ -25,15 +25,6 @@ export default class PostEdit extends Component {
     })
   }
 
-//   setFormData = () => {
-    
-//     this.setState({
-//       title: this.props.post.title,
-//       img_url: this.props.post.img_url,
-//       content: this.props.post.content,
-//       location: this.props.post.location
-//     })
-// }
 
   handleChange = (e) => {
     const { name, value } = e.target;

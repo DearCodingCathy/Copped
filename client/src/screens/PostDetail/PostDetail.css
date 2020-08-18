@@ -3,8 +3,8 @@ font-family: 'Oswald', sans-serif;
 font-weight: 200;
 }
 .prod-img {
-  width: 70%;
-  height: 20rem;
+  width: 50%;
+  height: 20%;
 }
 
 .text-container {
@@ -16,6 +16,5 @@ font-weight: 200;
 }
 
 .delete-btn {
-  /* border: none; */
   background-color: white;
 }

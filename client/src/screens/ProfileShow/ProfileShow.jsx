@@ -65,7 +65,6 @@ export default class ProfileShow extends Component {
           <hr />
         </div>
 
-
         <div>
         <Tabs defaultActiveKey="home" >
             <Tab eventKey="home" title="Posts">
@@ -79,7 +78,7 @@ export default class ProfileShow extends Component {
                     <Card.Header>
                       <Card.Title>{post.title}</Card.Title>
                     </Card.Header>
-                    <Card.Img variant="top" src={post.img_url} style={{ height: '15rem' }} />
+                    <Card.Img className='mx-auto' variant="top" src={post.img_url} style={{ height: '10rem', width: '20rem'}} />
                     <Card.Body>
                       <div className='d-flex justify-content-between'>
                       </div>
