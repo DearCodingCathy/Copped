@@ -4,8 +4,9 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: auto;
-  padding-bottom: 100px;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 150px;
   display: flex;
   justify-content: center;
   flex-flow: column nowrap;
@@ -118,20 +119,13 @@ font-family: 'Oswald', sans-serif;
 
 }
 
-@media only screen and (max-width: 600px) {
- .login-main {
-  background: url('https://i.imgur.com/pXpK8WC.jpg') no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: auto;
-  padding-bottom: 100px;
-  display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-  font-family: 'Oswald', sans-serif;
-
+@media only screen and (max-width: 768px) {
+.login-main {
+background: url('https://i.imgur.com/pXpK8WC.jpg') no-repeat center center; 
+background-size: cover;
+}
+.form {
+  width: 12em;
 }
 
 .base-container {
@@ -155,7 +149,7 @@ flex-direction: column;
 width: 8em;
 }
 .login-img {
-width: 50%;
+width: 70%;
 height: 50%;
 }
 
@@ -179,8 +173,8 @@ font-weight: 200;
 }
 
 .input-contain {
-min-width: 18em;
-height: 37px;
+min-width: 11em;
+height: 35px;
 padding: 0px 10px;
 font-size: 16px;
 font-family: 'Oswald', sans-serif;
@@ -229,9 +223,9 @@ flex-direction: column;
 justify-content: center;
 height: 90%;
 background-color: #3498db;
-width: 40%;
+width: 30%;
 position: absolute;
-right: -40%;
+right: -30%;
 border-radius: 4px;
 margin-top: -25px;
 box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);

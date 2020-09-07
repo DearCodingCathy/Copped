@@ -12,6 +12,7 @@ import CreatePost from '../../screens/CreatePost/CreatePost'
 import AllPost from '../../screens/AllPost/AllPost'
 import StreetHeat from '../../screens/StreetHeat/StreetHeat'
 import UserLogin from '../../screens/UserLogin/UserLogin'
+import ProfileEdit from '../../screens/ProfileEdit/ProfileEdit'
 
 
 export default class Main extends Component {
@@ -104,6 +105,8 @@ export default class Main extends Component {
           />
             </>
         )} />
+
+
         <Route path='/post/:id' render={(props) => (
           
           <PostDetail
@@ -116,8 +119,8 @@ export default class Main extends Component {
             handlePostDelete={this.handlePostDelete}
           />)} />
 
+
         <Route path='/editpost/:id' render={(props) => (
-        
         <PostEdit
             {...props}
             currentUser={this.props.currentUser}
@@ -128,8 +131,8 @@ export default class Main extends Component {
           />
         )} />
 
+
         <Route path='/newpost' render={(props) => (
-          
           <CreatePost
             {...props}
             currentUser={this.props.currentUser}
@@ -137,18 +140,34 @@ export default class Main extends Component {
           />
         )} />
 
+
         <Route path='/allpost' render={(props) => (
         <AllPost
-            {...props}
+          {...props}
           />
         )} />
+
 
         <Route path='/streetheat' render={(props) => (
           <StreetHeat
             {...props}
           />
         )} />
-        
+
+
+        <Route path='/editaccount' render={(props) => (
+          <ProfileEdit
+            {...props}
+            currentUser={this.props.currentUser}
+
+          />
+        )} />
+
+
+
+
+
+
       </main>
     )
     } else {
