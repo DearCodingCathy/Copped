@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Tab, Tabs, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FiLogOut } from 'react-icons/fi'
+// import{ BsGear } from 'react-icons/bs'
 import { Dialog } from "react-bootstrap-easy-dialog";
 import './ProfileShow.css'
 
@@ -56,6 +57,12 @@ export default class ProfileShow extends Component {
                 return <><FiLogOut onClick={handleClick} className='gear-icon text-dark' /> </>
               }}
             </Dialog> 
+            
+            
+            
+            
+            {/* Post MVP EDIT Profile Feature */}
+            {/* <Link to={`/editaccount/${currentUser.username}`}><BsGear /></Link> */}
 
           </div>
           <h4>{currentUser.first_name} {currentUser.last_name}</h4>

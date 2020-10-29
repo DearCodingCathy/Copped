@@ -53,7 +53,6 @@ export default class PostEdit extends Component {
             handlePostUpdate(currentUser.id, this.props.match.params.id, this.state);
             history.push(`/user/${currentUser.id}`)
           }
-          
         }
         >
           

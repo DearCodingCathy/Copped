@@ -12,7 +12,7 @@ import CreatePost from '../../screens/CreatePost/CreatePost'
 import AllPost from '../../screens/AllPost/AllPost'
 import StreetHeat from '../../screens/StreetHeat/StreetHeat'
 import UserLogin from '../../screens/UserLogin/UserLogin'
-import ProfileEdit from '../../screens/ProfileEdit/ProfileEdit'
+// import ProfileEdit from '../../screens/ProfileEdit/ProfileEdit'
 
 
 export default class Main extends Component {
@@ -154,14 +154,14 @@ export default class Main extends Component {
           />
         )} />
 
-
-        <Route path='/editaccount' render={(props) => (
+        {/* Post MVP Edit Profile feature  */}
+        {/* <Route path='/editaccount/:id' render={(props) => (
           <ProfileEdit
             {...props}
             currentUser={this.props.currentUser}
 
           />
-        )} />
+        )} /> */}
 
 
 

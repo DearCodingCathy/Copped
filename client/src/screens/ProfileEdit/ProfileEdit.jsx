@@ -17,7 +17,7 @@ constructor() {
 }
 
   componentDidMount() {
-    const userId = this.props.currentUser;
+    const userId = this.props.currentUser.id;
     this.fetchOneUser(userId)
   }
 
@@ -39,7 +39,7 @@ const user = await readOneUser(user_id)
   // handleUserUpdate = async (user_id,data) => {
   //   const newUser = await updateUser(user_id, data);
   //   this.setState(prevState => ({
-  //     user: prevState.posts.map(post => post.id === parseInt(id) ? newPost : post)
+  //     user: prevState.user.map(user => user.id === parseInt(id) ? newUser : user)
   //   }))
   // }
 
@@ -56,7 +56,7 @@ const user = await readOneUser(user_id)
     e.preventDefault()
     const { imgUrl, username, firstName, lastName, email, bio } = this.state;
     const updatedInfo = { img_url: imgUrl, username: username, first_name: firstName, last_name: lastName, email: email, bio: bio }
-    const userData = await updateUser(this.props.currentUser.id, updatedInfo)
+    await updateUser(this.props.currentUser.id, updatedInfo)
     this.props.history.push(`/user/${this.props.currentUser.username}`)
   }
   
@@ -64,13 +64,17 @@ const user = await readOneUser(user_id)
     return (
       <div>
 
-        <form>
+        <form
+          onSubmit={this.handleSubmit}
+          className='border d-flex flex-column m-5'>
+
+        <img src={this.state.imgUrl} alt='profile pic' />
 
         <label> Profile Image: </label>
           <input
         type='text'
         value={this.state.imgUrl}
-        name=''
+        name='imgUrl'
         onChange={this.handleChange}
         />
 
@@ -78,7 +82,7 @@ const user = await readOneUser(user_id)
         <input
         type='text'
         value={this.state.username}
-        name=''
+        name='username'
         onChange={this.handleChange}
         />
 
@@ -86,7 +90,7 @@ const user = await readOneUser(user_id)
         <input
         type='text'
         value={this.state.firstName}
-        name=''
+        name='firstName'
         onChange={this.handleChange}
         />
 
@@ -94,17 +98,20 @@ const user = await readOneUser(user_id)
         <input
         type='text'
         value={this.state.lastName}
-        name=''
+        name='lastName'
         onChange={this.handleChange}
         />
 
         <label> Bio: </label>
-        <input
+        <textarea
         type='text'
         value={this.state.bio}
-        name=''
+        name='bio'
         onChange={this.handleChange}
         />
+          
+        
+        <button className='mt-5'> Save Changes</button>
 
         {/* <label> </label>
         <input
