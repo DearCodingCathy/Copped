@@ -64,6 +64,9 @@ export default class ProfileShow extends Component {
             {/* Post MVP EDIT Profile Feature */}
             {/* <Link to={`/editaccount/${currentUser.username}`}><BsGear /></Link> */}
 
+
+
+
           </div>
           <h4>{currentUser.first_name} {currentUser.last_name}</h4>
           <p>Member Since: {this.state.date}</p>
