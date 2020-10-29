@@ -9,8 +9,6 @@ export default class UserLogin extends Component {
     password: ''
   }
 
-
-
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -29,7 +27,7 @@ return (
     <div className='login-header'>Login</div>
     <div className='content'>
 <div className='l-image mx-3 align-self-center'>
-      <img className='login-img' src="https://i.imgur.com/jPhLW1W.jpg" alt='children sneakers' />
+  <img className='login-img' src="https://i.imgur.com/jPhLW1W.jpg" alt='children sneakers' />
 </div>
 <div className='form'>
   <div className="form-group">

@@ -123,7 +123,7 @@ export default class PostDetail extends Component {
             <div>
               {
                 this.state.comments.map(comment => (
-                  <div className='align-self-center border mx-5 mb-1'>
+                  <div className='align-self-center border mx-5 mb-1' key={comment.id}>
                     <p className='p-2'>{comment.content}</p>
                     <small><em>{this.state.date}</em></small>
                   </div>
